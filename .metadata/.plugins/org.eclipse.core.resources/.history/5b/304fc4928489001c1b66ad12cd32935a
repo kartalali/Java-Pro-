@@ -1,0 +1,19 @@
+package springIntro;
+
+public class MySqlCustomerDal implements ICustomerDal{
+	
+	String connection;
+	public String getConnection() {
+		return connection;
+	}
+	public void setConnection(String connection) {
+		this.connection = connection;
+	}
+
+	@Override
+	public void add() {
+		System.out.println("MySql veritabanina eklendi");
+		
+	}
+
+}

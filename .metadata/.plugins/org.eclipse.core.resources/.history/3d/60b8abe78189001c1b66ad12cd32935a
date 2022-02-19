@@ -1,0 +1,21 @@
+package springIntro;
+
+public class CustomerManager implements ICustomerService{
+	
+	private ICustomerDal customerDal;
+	
+	//constructor injection
+	/*public CustomerManager(ICustomerDal customerDal) {
+		this.customerDal = customerDal;
+	}*/
+	
+	//setter injection
+	
+	
+
+	public void add() {
+		//job rules	
+		customerDal.add();
+		
+	}
+}

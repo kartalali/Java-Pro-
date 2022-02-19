@@ -1,0 +1,14 @@
+package springIntro;
+
+public class CustomerManager {
+	
+	public void add() {
+		//job rules	
+		CustomerDal customerDal = new CustomerDal();
+		customerDal.add();
+		
+	}
+	
+	
+
+}

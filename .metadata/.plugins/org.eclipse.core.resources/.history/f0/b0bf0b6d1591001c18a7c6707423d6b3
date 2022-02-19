@@ -1,0 +1,38 @@
+package com.hibernate;
+
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		SessionFactory factory = new Configuration()
+				.configure("hibernate.cfg.xml").addAnnotatedClass(Person.class).buildSessionFactory();
+		
+		Session session = factory.getCurrentSession();
+		
+		try {
+			
+		session.beginTransaction();
+		//from Person p where age='34' or age='35'
+		//from Person p where p.firstname LIKE '%l%'
+		//List<Person> persons = session.createQuery("from Person p ORDER BY p.firstname").getResultList();
+		List<Person> firstnames = session.createQuery("select p.firstname from Person p GROUP BY p.age").getResultList();
+		
+		for (Person firstname : firstnames) {
+			System.out.println(firstname.getFirstname());
+		}
+		session.getTransaction();
+			
+		}finally {
+			
+			factory.close();
+		}
+
+	}
+
+}
